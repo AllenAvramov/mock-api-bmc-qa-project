@@ -17,6 +17,17 @@ pipeline {
                 sh 'docker exec mock-api pytest -q tests/'
             }
         }
+        stage('DockerHub Login'){
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds', 
+                    usernameVariable: 'DH_USER', 
+                    passwordVariable: 'DH_PASS')]) {
+                sh '''
+                    echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin
+                '''
+            }
+        }
         stage('Push to DockerHub'){
             steps {
                 sh '''
