@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Push to DockerHub'){
             steps {
-                sh '''s
+                sh '''
                 docker tag mock-api allenavramov/mock-api:latest
                 docker push allenavramov/mock-api:latest
                 '''
