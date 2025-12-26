@@ -26,6 +26,7 @@ pipeline {
                 sh '''
                     echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin
                 '''
+                }
             }
         }
         stage('Push to DockerHub'){
