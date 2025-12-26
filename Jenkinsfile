@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'pytest tests/' 
+                sh 'docker exec mock-api pytest -q tests/'
             }
         }
         stage('Push to DockerHub'){
             steps {
                 sh '''s
-                docker tag mock-api allenavramov/mock-api
-                docker push allenavramov/mock-api
+                docker tag mock-api allenavramov/mock-api:latest
+                docker push allenavramov/mock-api:latest
                 '''
             }
         }
