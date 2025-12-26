@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-        image 'docker:24-git'
-        args  '-v /var/run/docker.sock:/var/run/docker.sock' // Allows Jenkins to start Docker agents and run Docker commands inside agents
-        reuseNode true
-        }
-    } 
+    agent any 
     stages {
         stage('Build Image') {
             steps {
