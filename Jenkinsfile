@@ -9,12 +9,12 @@ pipeline {
         stage('Run container'){
             steps {
                 sh 'docker run -d -p 8000:8000 --name mock-api mock-api'
-                sh 'sleep 5'
+                sh 'sleep 5' // important to give API time to start before running tests
             }
         }
         stage('Run Tests') {
             steps {
-                sh 'docker exec mock-api pytest -q tests/'
+                sh 'docker exec mock-api pytest tests/'
             }
         }
         stage('DockerHub Login'){
