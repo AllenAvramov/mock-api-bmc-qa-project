@@ -37,6 +37,21 @@ pipeline {
                 '''
             }
         }
+        stage('Pull & Run from DockerHub') { //To validate that the image pushed to Docker Hub is complete, runnable, and independent of the build environment.
+            steps {
+                sh '''
+                    docker rm -f mock-api || true
+
+                    docker rmi mock-api || true
+                    docker rmi allenavramov/mock-api:latest || true
+
+                    docker pull allenavramov/mock-api:latest
+                    docker run -d -p 8000:8000 --name mock-api allenavramov/mock-api:latest
+
+                    sleep 5
+                '''
+            }
+        }
     }
     post { //runs After the pipeline finishes
         always {
