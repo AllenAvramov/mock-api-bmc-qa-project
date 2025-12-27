@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Run container'){
             steps {
+                sh 'docker rm -f mock-api || true'
                 sh 'docker run -d -p 8000:8000 --name mock-api mock-api'
                 sh 'sleep 5' // important to give API time to start before running tests
             }
