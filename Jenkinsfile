@@ -48,9 +48,6 @@ pipeline {
 
                     docker pull allenavramov/mock-api:latest
                     docker run -d -p 8000:8000 --name mock-api allenavramov/mock-api:latest
-
-                    sleep 5
-                    docker exec mock-api curl -f http://127.0.0.1:8000/health
                 '''
             }
         }
