@@ -49,6 +49,7 @@ pipeline {
                     docker run -d -p 8000:8000 --name mock-api allenavramov/mock-api:latest
 
                     sleep 5
+                    curl -f http://localhost:8000/health
                 '''
             }
         }
