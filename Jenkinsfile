@@ -24,8 +24,8 @@ pipeline {
                     usernameVariable: 'DH_USER', 
                     passwordVariable: 'DH_PASS')]) {
                 sh '''
-                    echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin
-                '''
+                    echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin 
+                ''' // | sends that output as input to the next command
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                 '''
             }
         }
-        stage('Pull & Run from DockerHub') { //To validate that the image pushed to Docker Hub is complete, runnable, and independent of the build environment.
+        stage('Pull & Run from DockerHub') { //To validate that the image pushed to DockerHub is complete, runnable, and independent of the build environment.
             steps {
                 sh '''
                     docker rm -f mock-api || true
