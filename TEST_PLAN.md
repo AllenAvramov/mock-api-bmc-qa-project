@@ -13,14 +13,14 @@ for valid, invalid or error scenarios.
 
 ## Test Scenarios
 
-| Test Case               | Input            | Output                             | Expected Result           |
-| ----------------------- | ---------------- | ---------------------------------- | ------------------------- |
-| Tests health            | GET /health      | {"status":"ok"}                    | 200 OK                    |
-| Valid request           | GET /item?id=1   | {"id": 1, "name": "Test"}          | 200 OK                    |
-| Invalid input           | GET /item?id=-1  | {"detail":"Invalid ID"}            | 400 Bad Request           |
-| Missing id parameter    | GET /item        | {"detail":"Invalid ID"}            | 422 Unprocessable Entity  |
-| Non-integer id          | GET /item?id=abc | {"detail":"Invalid ID"}            | 422 Unprocessable Entity  |
-| Server error simulation | GET /item?id=10  | {"detail":"Internal server error"} | 500 Internal Server Error |
+| Test Case               | Input            | Output                                | Expected Result           |
+| ----------------------- | ---------------- | ------------------------------------- | ------------------------- |
+| Tests health            | GET /health      | {"status":"ok"}                       | 200 OK                    |
+| Valid request           | GET /item?id=1   | {"id": 1, "name": "Test"}             | 200 OK                    |
+| Invalid input           | GET /item?id=-1  | {"detail":"Invalid ID"}               | 400 Bad Request           |
+| Missing id parameter    | GET /item        | FastAPI validation JSON (detail list) | 422 Unprocessable Entity  |
+| Non-integer id          | GET /item?id=abc | FastAPI validation JSON (detail list) | 422 Unprocessable Entity  |
+| Server error simulation | GET /item?id=10  | {"detail":"Internal server error"}    | 500 Internal Server Error |
 
 | Test Case               | Input                                         | Output                               | Expected Result              |
 | ----------------------- | --------------------------------------------- | ------------------------------------ | ---------------------------- |

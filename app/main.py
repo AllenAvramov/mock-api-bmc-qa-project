@@ -18,7 +18,7 @@ def get_item(id: int):
         "name": "Test"
     }
 
-@app.post("/item", status_code=201)
+@app.post("/item", status_code=201) # 201 code - created 
 async def create_item(request: Request):
     body = await request.json()
 
