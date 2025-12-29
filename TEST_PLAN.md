@@ -28,7 +28,7 @@ for valid, invalid or error scenarios.
 | Missing required fields | POST /item body: {"name":"Apple"}             | {"detail":"Missing required fields"} | 400 Bad Request              |
 | Invalid field types     | POST /item body: {"name":123,"price":"abc"}   | {"detail":"Invalid field types"}     | 400 Bad Request              |
 
-## Success Criteria
+## Success Criteria for the project
 
 - All automated tests pass (pytest tests/)
 - Manual verification via Postman matches expected outputs
