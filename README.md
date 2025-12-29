@@ -9,6 +9,14 @@ docker run -d \
  -v /var/run/docker.sock:/var/run/docker.sock \  
  jenkins-with-docker
 
+## Jenkins image with Docker CLI and mounted the Docker socket so Jenkins could run Docker commands in the pipeline.
+
+FROM jenkins/jenkins:lts
+
+USER root
+RUN apt-get update && apt-get install -y docker.io && rm -rf /var/lib/apt/lists/\*
+USER jenkins
+
 ## How to run server
 
 python3 -m uvicorn app.main:app --reload
