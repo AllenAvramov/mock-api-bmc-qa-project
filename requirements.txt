@@ -1,4 +1,4 @@
-fastapi
-uvicorn
-pytest
-requests
+fastapi~=0.110
+uvicorn~=0.29
+pytest~=8.0
+requests~=2.31
